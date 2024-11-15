@@ -18,7 +18,8 @@
     /* Body Styling */
     body {
       font-family: Arial, sans-serif;
-      background-color: #e0f7fa; /* Light blue background */
+      background: url('background.jpg') no-repeat center center fixed; /* Background image */
+      background-size: cover;
       color: #333;
     }
 
@@ -27,7 +28,7 @@
       max-width: 600px;
       margin: 50px auto;
       padding: 30px;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
       border-radius: 12px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       border-top: 4px solid #4caf50; /* Green top border */
@@ -100,11 +101,31 @@
       font-size: 1.2em;
       font-weight: bold;
     }
+
+    /* Image Styling */
+    .decorative-images {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .decorative-images img {
+      margin: 10px;
+      width: 120px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    body {
+        background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
+        background-size: cover; /* Makes the image cover the entire element */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-position: center; /* Centers the image */
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center mt-4">Crop Price Prediction</h1>
+    <h1 class="text-center mt-4">Paddy Crop Price Prediction</h1>
     
     <!-- User Input Form -->
     <form id="cropForm" method="POST" action="/predict">
@@ -141,6 +162,12 @@
     {% if prediction_text %}
     <div class="result">{{ prediction_text }}</div>
     {% endif %}
+
+    <!-- Decorative Images -->
+    <div class="decorative-images">
+      <img src="{{ url_for('static', filename='images/paddyanimate.webp') }}" alt="Crop Animation 1">
+      <img src="{{ url_for('static', filename='images/cropanimated.png') }}" alt="Crop Animation 2">
+    </div>
   </div>
 </body>
 </html>
